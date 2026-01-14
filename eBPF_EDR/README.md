@@ -1,8 +1,8 @@
 # eBPF-Based Kernel Endpoint Detection & Response (EDR)
 
-![Language](https://img.shields.io/badge/Language-C%20%7C%20Python-blue)
-![Platform](https://img.shields.io/badge/Platform-Linux%20Kernel-black)
-![Technology](https://img.shields.io/badge/Tech-eBPF%20%7C%20BCC-red)
+!(https://img.shields.io/badge/Language-C%20%7C%20Python-blue)
+!(https://img.shields.io/badge/Platform-Linux%20Kernel-black)
+!(https://img.shields.io/badge/Tech-eBPF%20%7C%20BCC-red)
 
 
 Disclaimer!
