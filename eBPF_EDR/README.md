@@ -59,17 +59,8 @@ Agent captures full context, including sensitive file access attempts (e.g., acc
 
 ![Telemetry Log](screenshots/Screenshot_2026-01-12_15-35-16.png)
 
-## Instalation & Usage
-
-### Prerequisites
+## Prerequisites
 
 * Linux Kernel 5.3+
 * BCC Tools & Python bindings.
 * Root privileges
-
-**On Kali Linux / Ubuntu:**
-
-```bash
-sudo apt update
-sudo apt install bpfcc-tools linux-headers-$(uname -r) python3-bpfcc
-```
