@@ -78,4 +78,6 @@ The tool manage to capture the mismatch and triggers the forensic dump.
 * GCC compiler
 * Root Privileges
 
-Created by : Yustinus Hendi Setyawan, Tuesday, January 14 2026
+---
+Created by : Yustinus Hendi Setyawan
+Date : Friday, January 14 2026
