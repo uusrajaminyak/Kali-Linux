@@ -28,16 +28,19 @@ Symbolic Execution De-virtualizer is a Reverse-Engineering tool designed to tack
 ## Architecture
 
 1.  **Trace Analysis**
-    * Reads the target bytecode array.
-    * Initializes a symbolic context to track the state of virtual registers.
+
+    - Reads the target bytecode array.
+    - Initializes a symbolic context to track the state of virtual registers.
 
 2.  **Symbolic Execution (Lifting)**
-    * Iterates through the bytecode instructions (Fetch-Decode-Execute simulation).
-    * Builds a chain of symbolic expressions instead of calculating concrete values.
+
+    - Iterates through the bytecode instructions (Fetch-Decode-Execute simulation).
+    - Builds a chain of symbolic expressions instead of calculating concrete values.
 
 3.  **Logic Synthesis (Solving)**
-    * Passes the complex AST to the Z3 Solver.
-    * Computes the simplified logical equivalent and outputs the final clean formula.
+
+    - Passes the complex AST to the Z3 Solver.
+    - Computes the simplified logical equivalent and outputs the final clean formula.
 
 ## Demo & Proof of Concept
 
