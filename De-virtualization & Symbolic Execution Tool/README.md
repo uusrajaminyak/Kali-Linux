@@ -64,5 +64,5 @@ By running `solve_vm.py` it performs a symbolic execution over the bytecode and 
 * Z3 Solver
 
 ---
-Created by : Yustinus Hendi Setyawan
-Date : Friday, January 15 2026
+* Created by : Yustinus Hendi Setyawan
+* Date : Friday, January 15 2026

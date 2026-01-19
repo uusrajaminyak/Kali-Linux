@@ -66,5 +66,5 @@ Agent captures full context, including sensitive file access attempts (e.g., acc
 * Root privileges
 
 ---
-Created by : Yustinus Hendi Setyawan
-Date : Friday, January 12 2026
+* Created by : Yustinus Hendi Setyawan
+* Date : Friday, January 12 2026

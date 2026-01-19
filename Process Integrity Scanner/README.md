@@ -79,5 +79,5 @@ The tool manage to capture the mismatch and triggers the forensic dump.
 * Root Privileges
 
 ---
-Created by : Yustinus Hendi Setyawan
-Date : Friday, January 14 2026
+* Created by : Yustinus Hendi Setyawan
+* Date : Friday, January 14 2026
