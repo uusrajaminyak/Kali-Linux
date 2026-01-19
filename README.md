@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository serves as a centralized research lab. The projects housed here focus on Defense Engineering, Kernel-Level Monitoring, and Malware Analysis at the binary level.All tools are developed and stress-tested in a Kali Linux environment, utilizing frameworks like `eBPF`, `Qiling`, `Triton`, and `YARA`.
+This repository serves as a centralized research lab for education in cybersecurity. The projects housed here focus on Defense Engineering, Kernel-Level Monitoring, and Malware Analysis at the binary level.All tools are developed and stress-tested in a Kali Linux environment, utilizing frameworks like `eBPF`, `Qiling`, `Triton`, and `YARA`.
 
 ## Project Index
 
@@ -37,5 +37,5 @@ This laboratory relies on the following engines:
 Feel free to explore and improve any projects
 
 ```bash
-git clone [https://github.com/uusrajaminyak/Kali-Linux.git]
+git clone https://github.com/uusrajaminyak/Kali-Linux.git
 ```
