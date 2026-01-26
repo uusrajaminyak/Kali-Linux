@@ -2,7 +2,7 @@ from scapy.all import *
 import sys
 from datetime import datetime
 
-TARGET_IP = "192.168.1.5"
+TARGET_IP = "192.168.100.45"
 
 def packet_handler(pkt):
     if pkt.haslayer(DNS) and pkt.haslayer(DNSQR):
