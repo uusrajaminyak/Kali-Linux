@@ -40,9 +40,9 @@ The tool is launched on the monitoring interface (`wlan0mon`). The Channel Hoppe
 ![Radar Start](screenshots/Screenshot_2026-01-28_20-57-19.png)
 
 ### 2. Active Scanning
-As the tool runs, it populates the table with detected Access Points. It successfully captures details like the MAC Address (BSSID) and Signal Strength (PWR), providing a live view of the wireless environment.
+As the tool runs, it populates the table with detected Access Points. It successfully captures details like the MAC Address (BSSID) and Signal Strength (PWR), providing a live view of the wireless environment. But unfortunately i had to censored both the Wifi name and the mac address as a prevention in case some unresponsible individuals tried to exploit it.
 
-![Scanning Results](screenshots??/Screenshot_2026-01-28_20-58-47.png)
+![Scanning Results](screenshots/Screenshot_2026-01-28_20-58-47.png)
 
 ## Prerequisites
 
