@@ -3,8 +3,8 @@ import sys
 import os
 import time
 
-TARGET_IP = "192.168.100.45"
-GATEWAY_IP = "192.168.100.1"
+TARGET_IP = "..."
+GATEWAY_IP = "..."
 
 def get_mac(ip):
     arp_request = ARP(pdst=ip)
