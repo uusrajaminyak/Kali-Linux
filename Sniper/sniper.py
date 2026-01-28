@@ -42,7 +42,7 @@ def parse_and_search(xml_file):
                             capture_output=True,
                             text=True
                         )
-                        if "Explot Title" in exploit_check.stdout:
+                        if "Exploit Title" in exploit_check.stdout:
                             status = "Potential Exploit Found!"
                             found_vuln += 1
                             save_log(port_id, query, exploit_check.stdout)
