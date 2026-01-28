@@ -38,3 +38,12 @@ This tool is an automated reconnaissance and vulnerability scanning tool designe
 Execute the script with root privileges (required for Nmap OS fingerprinting) and the target IP.
 
 ![Start Scan](screenshots/Screenshot_2026-01-29_01-28-50.png)
+
+## Prerequisites
+
+* Linux
+* Root Privilege
+
+---
+Created by: Yustinus Hendi Setyawan
+Date: Tuesday, January 6 2026
