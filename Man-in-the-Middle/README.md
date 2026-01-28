@@ -8,6 +8,8 @@
 
 MITM Framework is a Python-based network offensive tool designed to intercept, manipulate, and monitor traffic within a local area network (LAN). It leverages the ARP Spoofing technique to redirect victim traffic through the attacker's machine, effectively positioning the attacker as a "Man-in-the-Middle" between the victim and the gateway. This tool demonstrates how insecure protocols (like ARP and HTTP) can be exploited to perform surveillance and session hijacking without physical access to the target device.
 
+Note: I have to censor some sensitive info like ip addresses and mac addresses as an act of prevention in case some unresponsible individuals tries to exploit it
+
 ## Key Features
 
 ### 1. ARP Poisoning Engine
@@ -41,12 +43,12 @@ MITM Framework is a Python-based network offensive tool designed to intercept, m
 ## Demo & Proof of Concept
 
 ### 1. Network Reconnaissance
-Using `nmap` to scan the subnet `192.168.100.0/24` and identify potential targets. The scan reveals active hosts, including a Huawei device at `192.168.100.1` and other clients.
+Using `nmap` to scan the subnet and identify potential targets. The scan reveals active hosts.
 
 ![Nmap Scan](screenshots/Screenshot_2026-01-26_12-33-30.png)
 
 ### 2. Launching the Attack
-Executing `MITM.py` to start the ARP Spoofing process. The tool automatically resolves MAC addresses and begins sending spoofed packets to the Target (`192.168.100.45`) and Gateway (`192.168.100.1`).
+Executing `MITM.py` to start the ARP Spoofing process. The tool automatically resolves MAC addresses and begins sending spoofed packets to the Target and Gateway.
 
 ![ARP Spoofing](screenshots/Screenshot_2026-01-26_12-34-44.png)
 
