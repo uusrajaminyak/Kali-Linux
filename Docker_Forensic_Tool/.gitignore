@@ -1,0 +1,11 @@
+collected_evidence/
+*.dump
+*.log
+
+__pychache__/
+*.pyc
+
+.env
+.vscode/
+.idea/
+.DS_Store
