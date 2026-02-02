@@ -46,7 +46,7 @@ The tool identifies the running container (`target_01`) and maps it to the under
 ### 2. Artifact Collection & Memory Dumping
 Here, we successfully extract the `/etc/passwd` file and perform a full RAM dump. Notice the SHA256 hash is generated instantly to prove integrity.
 
-![Extraction Process](screenshots/Screenshot_2026-02-02_18-05-30.jpg)
+![Extraction Process](screenshots/Screenshot_2026-02-02_18-05-30.png)
 
 ### 3. Analysis & Cleanup
 Using `strings` on the generated `.dump` file reveals runtime data (Nginx configuration and version) that resides only in RAM. The cleanup command ensures no sensitive data is left on the analyst's machine.
