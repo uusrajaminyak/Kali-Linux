@@ -70,13 +70,71 @@ def collect_file(host_pid, target_filepath):
     except Exception as e:
         print(f"Error collecting file {target_filepath}: {e}")
 
+def dump_memory(host_pid, container_name):
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"{timestamp}_{container_name}_memory.dump"
+    output_path = os.path.join(Evidence_Dir, filename)
+    print(f"Begin memory dump for pid {host_pid}")
+    try:
+        cmd = ["gcore", "-o", output_path, str(host_pid)]
+        subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        generated_file = f"{output_path}.{host_pid}"
+        if os.path.exists(generated_file):
+            final_path = output_path
+            os.rename(generated_file, final_path)
+            print(f"Memory dump saved to {final_path}")
+            file_hash = calculate_sha256(final_path)
+            print(f"SHA256: {file_hash}")
+            with open(os.path.join(Evidence_Dir, "audit_log.txt"), "a") as log:
+                log.write(f"{timestamp} | memory_dump | {final_path} | {file_hash}\n")
+        else:
+            print("Memory dump file was not created.")
+    except FileNotFoundError:
+        print("gcore command not found. Please install gdb package.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error during memory dump: {e}")
+    except Exception as e:
+        print(f"Unexpected error during memory dump: {e}")
+
+def clean_evidence():
+    folder = Evidence_Dir
+    print(f"Cleaning evidence folder: {folder}")
+    confirm = input("Are you sure you want to delete all collected evidence? (y/n): ")
+    if confirm.lower() != 'y':
+        print("Aborting cleanup.")
+        return
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+                print(f"Deleted file: {file_path}")
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(f"Failed to delete {file_path}. Reason: {e}")
+
 if __name__ == "__main__":
+    if len(sys.argv) == 2 and sys.argv[1] == "--clean":
+        clean_evidence()
+        sys.exit(0)
+
     if len(sys.argv) < 3:
-        print("Usage: sudo python3 main.py <container_name> <file_to_collect>")
+        print("Commands:")
+        print(" 1. Collect File : sudo python3 main.py [container_name] [file_path]")
+        print(" 2. Dump Memory  : sudo python3 main.py [container_name] --memory")
+        print(" 3. Clean Evidence Folder : sudo python3 main.py --clean")
         sys.exit(1)
+
     container_name = sys.argv[1]
-    target_files = sys.argv[2]
-    print(f"Target container: {container_name}")
+    second_arg = sys.argv[2]
+
+    print(f"===== CONTAINER FORENSIC TOOL =====")
     pid = get_container_pid(container_name)
-    print(f"Container PID on host: {pid}")
-    collect_file(pid, target_files)
+    print(f"[+] Target Container: {container_name}")
+    print(f"[+] Host PID: {pid}")
+
+    if second_arg == "--memory":
+        dump_memory(pid, container_name)
+    else:
+        collect_file(pid, second_arg)
