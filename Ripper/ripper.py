@@ -4,6 +4,7 @@ from unicorn import *
 from unicorn.x86_const import *
 from capstone import *
 import string
+import re
 
 stack_size = 2 * 1024 * 1024
 stack_base = 0x00100000
@@ -42,13 +43,14 @@ def hook_code_monitor(uc, address, size, user_data):
         regs = [UC_X86_REG_RAX, UC_X86_REG_RBX, UC_X86_REG_RCX, UC_X86_REG_RDX, UC_X86_REG_RSI, UC_X86_REG_RDI]
         for reg in regs:
             val = uc.reg_read(reg)
-            if val > 0x10000:
+            if val > 0x10000 and val < 0xFFFFFFFFFF:
                 try:
-                    mem_data = uc.mem_read(val, 50)
+                    mem_data = uc.mem_read(val, 64)
                     if b'\x00' in mem_data:
                         mem_data = mem_data.split(b'\x00')[0]
                     if is_readable(mem_data):
                         s = mem_data.decode('utf-8')
+                        s = s.strip()
                         if s not in extracted_strings:
                             print(f"[+] Found string at 0x{val:X}")
                             extracted_strings.add(s)
@@ -84,13 +86,28 @@ def emulate(file_path):
         print(f"[*] Starting emulation at 0x{entry_point:X}")
         mu.emu_start(entry_point, entry_point + 0x10000, count = 200000)
         print("[*] Emulation complete.")
-
-        print("[*] Extracted strings:")
-        if extracted_strings:
-            for s in extracted_strings:
-                print(f" - {s}")
+        
+        pattern = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+        high_value_strings = []
+        other_strings = []
+        for s in extracted_strings:
+            if len(s) < 5:
+                continue
+            if pattern.search(s):
+                high_value_strings.append(s)
+            else:
+                other_strings.append(s)
+        print(f"[+] High-value IOCs found:")
+        if high_value_strings:
+            for ioc in high_value_strings:
+                print(f"[+] {ioc}")
         else:
-            print(" No strings extracted.")
+            print("[*] No high-value IOCs found.")
+            
+        print(f"[+] Other extracted strings:")
+        other_strings.sort(key=len, reverse=True)
+        for s in other_strings[:10]:
+            print(f"- {s}")
     except UcError as e:
         print(f"[!] Unicorn error: {e}")
     except Exception as e:
