@@ -6,13 +6,14 @@
 
 ## Overview
 
-This repository serves as a centralized research lab for education in cybersecurity. The projects housed here focus on Defense Engineering, Kernel-Level Monitoring, and Malware Analysis at the binary level.All tools are developed and stress-tested in a Kali Linux environment, utilizing frameworks like `eBPF`, `Qiling`, `Triton`, and `YARA`.
+This repository serves as a centralized research lab for education in cybersecurity. The projects housed here focus on Defense Engineering, Kernel-Level Monitoring, and Malware Analysis at the binary level. All tools are developed and stress-tested in a Kali Linux environment, utilizing frameworks like `eBPF`, `Qiling`, `Triton`, and `YARA`.
 
 ## Project Index
 
 ### Defensive Engineering & Forensics
 | Project | Tech Stack | Description |
 | :--- | :--- | :--- |
+| [Docker Forensic Tool](#docker-forensic-tool) | `Python` `Docker API` | Agentless DFIR utility designed to extract volatile evidence and dump process memory directly from compromised containers. |
 | [YARA Malware Scanner](./YARA_Malware_Scanner) | `Python` `YARA` | Automated Threat Triage System. Scans file systems for malware artifacts based on custom signature rules and automatically quarantines threats. |
 | [eBPF EDR](./eBPF_EDR) | `C` `Python` `BCC` | Kernel-Level Endpoint Detection. Hooks into system calls using eBPF to monitor process execution and detect rootkits invisible to standard tools. |
 | [Process Integrity Scanner](./Process%20Integrity%20Scanner) | `Python` `Linux API` | Memory Forensics Tool. Hunts for fileless malware and code injection by analyzing `/proc` memory maps for suspicious RWX (Read-Write-Execute) regions. |
@@ -20,6 +21,7 @@ This repository serves as a centralized research lab for education in cybersecur
 ### Malware Analysis & Reverse Engineering
 | Project | Tech Stack | Description |
 | :--- | :--- | :--- |
+| [Automated Malware Config Extractor](#automated-malware-config-extractor) | `Python` `Unicorn` | CPU emulation engine utilizing Unicorn to safely execute obfuscated malware and automatically extract decrypted C2 configurations and IOCs. |
 | [Malware Unpacker](./Malware_Unpacker) | `Python` `Qiling` | Dynamic Unpacking Engine. Uses binary emulation to execute packed malware in a sandbox, identifying the Original Entry Point and dumping the clean payload. |
 | [De-virtualization Tool](./De-virtualization%20%26%20Symbolic%20Execution%20Tool) | `Python` `Triton` `Z3` | Obfuscation Defeater. Utilizes Symbolic Execution and SMT Solvers to simplify virtualized code and solve complex logical constraints in binaries. |
 | [Memory Shapeshifter](./Memory_Shapeshifter) | `C` `Python` | Runtime Evasion & Detection. A PoC demonstrating dynamic in-memory encryption (Polymorphism) to bypass AV, paired with a memory forensics tool to hunt for signatures in `/proc/{pid}/mem`. |
@@ -45,5 +47,5 @@ This laboratory relies on the following engines:
 Feel free to explore and improve any projects
 
 ```bash
-git clone https://github.com/uusrajaminyak/Kali-Linux.git
+git clone [https://github.com/uusrajaminyak/Kali-Linux.git](https://github.com/uusrajaminyak/Kali-Linux.git)
 ```
